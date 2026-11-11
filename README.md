@@ -2,8 +2,7 @@
 
 <div align="center">
 
-![SmartNutriTracker](assets/pibble-banner.png)
-
+![un_socio_mas]([https://tu-enlace-de-imagen.com/imanol.jpg](https://www.google.com/imgres?q=pibble&imgurl=https%3A%2F%2Fi.scdn.co%2Fimage%2Fab67616d0000b27332fdd9cfd9c3b89028ff58e6&imgrefurl=https%3A%2F%2Fopen.spotify.com%2Fintl-es%2Ftrack%2F2ZkNuVzYwNeRucDcejJOJt&docid=TnGavsS8CxkaaM&tbnid=StK4VJ4yOBhVrM&vet=12ahUKEwjsnfr04f6XAxWHpZUCHZCSJ80QnPAOegQINBAA..i&w=640&h=640&hcb=2&ved=2ahUKEwjsnfr04f6XAxWHpZUCHZCSJ80QnPAOegQINBAA))
 **Una plataforma web para promover una alimentación más saludable mediante la gestión y el seguimiento nutricional.**
 
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
