@@ -1,26 +1,44 @@
 using SmartNutriTracker.Components;
+using SmartNutriTracker.Modelos;
+using SmartNutriTracker.Servicios;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Servicios de Blazor
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+
+// Conexion con SQL Server
+builder.Services.AddDbContextFactory<SmartNutriTrackerContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("ConexionSQL")
+    )
+);
+
+// Servicio para proteger y verificar contrasenas
+builder.Services.AddScoped<IPasswordHasher<Usuario>, PasswordHasher<Usuario>>();
+
+// Servicio de usuarios
+builder.Services.AddScoped<UsuarioServicio>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
 }
-app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
+
+app.UseStatusCodePagesWithReExecute(
+    "/not-found",
+    createScopeForStatusCodePages: true);
+
 app.UseAntiforgery();
 
 app.MapStaticAssets();
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+
 app.Run();

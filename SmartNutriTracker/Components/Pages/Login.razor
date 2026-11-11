@@ -1,56 +1,84 @@
 ﻿@page "/login"
 @rendermode InteractiveServer
+
 <PageTitle>Iniciar sesión | SmartNutriTracker</PageTitle>
 
 <div class="login-page">
 
     <div class="login-container">
 
-        <div class="welcome-panel">
+        <!-- PANEL IZQUIERDO -->
+        <section class="welcome-panel">
 
             <div class="brand">
                 <div class="brand-icon">SN</div>
+
                 <span>SmartNutriTracker</span>
             </div>
 
             <div class="welcome-content">
-                <span class="welcome-tag">COLEGIO INNOVARE</span>
+
+                <span class="welcome-tag">
+                    COLEGIO INNOVARE
+                </span>
 
                 <h1>
-                    Cuida tu alimentación.<br />
-                    Mejora tu bienestar.
+                    Cuida tu alimentación.
+                    <span>Mejora tu bienestar.</span>
                 </h1>
 
                 <p>
-                    Una plataforma inteligente para gestionar,
-                    monitorear y mejorar tus hábitos nutricionales
-                    de manera sencilla.
+                    Una plataforma diseñada para facilitar la
+                    gestión de alimentos, organizar menús y
+                    consultar información nutricional.
                 </p>
 
                 <div class="feature">
+
                     <span class="feature-icon">01</span>
+
                     <div>
                         <strong>Seguimiento nutricional</strong>
-                        <small>Controla tus hábitos alimenticios.</small>
+                        <small>Organiza la información alimentaria.</small>
                     </div>
+
                 </div>
 
                 <div class="feature">
+
                     <span class="feature-icon">02</span>
+
                     <div>
                         <strong>Información organizada</strong>
-                        <small>Consulta tus datos de forma segura.</small>
+                        <small>Consulta tus datos de manera sencilla.</small>
                     </div>
+
                 </div>
+
+                <div class="feature">
+
+                    <span class="feature-icon">03</span>
+
+                    <div>
+                        <strong>Acceso seguro</strong>
+                        <small>Control mediante usuarios y roles.</small>
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="welcome-footer">
                 SMARTNUTRITRACKER · VERSIÓN 1.0
             </div>
 
-        </div>
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle circle-two"></div>
 
-        <div class="form-panel">
+        </section>
+
+        <!-- PANEL DERECHO -->
+        <section class="form-panel">
 
             <div class="mobile-brand">
                 <div class="brand-icon">SN</div>
@@ -59,7 +87,14 @@
 
             <div class="form-content">
 
-                <span class="form-tag">BIENVENIDO DE NUEVO</span>
+                <div class="form-indicator">
+                    <span></span>
+                    ACCESO A LA PLATAFORMA
+                </div>
+
+                <span class="form-tag">
+                    BIENVENIDO DE NUEVO
+                </span>
 
                 <h2>Iniciar sesión</h2>
 
@@ -71,27 +106,37 @@
                       @onsubmit:preventDefault>
 
                     <div class="input-group">
-                        <label>Correo electrónico</label>
+
+                        <label for="correo">Correo electrónico</label>
 
                         <div class="input-wrapper">
+
                             <span class="input-icon">✉</span>
 
-                            <input type="email"
+                            <input id="correo"
+                                   type="email"
                                    placeholder="ejemplo@innovare.edu"
                                    @bind="Correo"
+                                   autocomplete="username"
                                    required />
+
                         </div>
+
                     </div>
 
                     <div class="input-group">
-                        <label>Contraseña</label>
+
+                        <label for="contrasena">Contraseña</label>
 
                         <div class="input-wrapper">
+
                             <span class="input-icon">●</span>
 
-                            <input type="@TipoPassword"
+                            <input id="contrasena"
+                                   type="@TipoPassword"
                                    placeholder="Ingresa tu contraseña"
                                    @bind="Contrasena"
+                                   autocomplete="current-password"
                                    required />
 
                             <button type="button"
@@ -99,7 +144,9 @@
                                     @onclick="AlternarPassword">
                                 @(MostrarPassword ? "Ocultar" : "Ver")
                             </button>
+
                         </div>
+
                     </div>
 
                     <button type="submit" class="login-button">
@@ -116,6 +163,11 @@
 
                 </form>
 
+                <div class="registro-enlace">
+                    ¿No tienes una cuenta?
+                    <NavLink href="registro">Crear cuenta</NavLink>
+                </div>
+
                 <div class="security-note">
                     <span>●</span>
                     Acceso protegido para usuarios autorizados.
@@ -124,10 +176,10 @@
             </div>
 
             <div class="form-footer">
-                © 2026 SmartNutriTracker. Todos los derechos reservados.
+                © 2026 SmartNutriTracker · Colegio Innovare
             </div>
 
-        </div>
+        </section>
 
     </div>
 

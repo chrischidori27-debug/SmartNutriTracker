@@ -1,28 +1,39 @@
 
+/* =========================================
+   SMARTNUTRITRACKER - MAIN LAYOUT
+   ========================================= */
+
 .page {
     display: flex;
     min-height: 100vh;
-    background: #F3F7F5;
+    background: #000000;
+    color: #ffffff;
 }
 
+/* BARRA LATERAL */
 .sidebar {
-    width: 265px;
-    min-width: 265px;
+    width: 288px;
+    min-width: 288px;
     min-height: 100vh;
-    background: #102D26;
+    background: #000000;
+    border-right: 1px solid #262626;
 }
 
+/* CONTENIDO PRINCIPAL */
 .main-content {
     flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
+    background: #000000;
+    color: #ffffff;
 }
 
+/* ENCABEZADO */
 .top-header {
     min-height: 82px;
-    background: #FFFFFF;
-    border-bottom: 1px solid #E4ECE7;
+    background: #000000;
+    border-bottom: 1px solid #262626;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,16 +41,16 @@
 }
 
 .header-subtitle {
-    font-size: 9px;
-    color: #82968B;
+    font-size: 10px;
+    color: #737373;
     letter-spacing: 1.5px;
     font-weight: 700;
 }
 
 .top-header h5 {
     margin: 4px 0 0 0;
-    color: #183D30;
-    font-weight: 700;
+    color: #ffffff;
+    font-weight: 800;
     font-size: 17px;
 }
 
@@ -47,8 +58,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #E8F5ED;
-    color: #267653;
+    background: rgba(34, 197, 94, 0.10);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.25);
     padding: 8px 13px;
     border-radius: 20px;
     font-size: 11px;
@@ -59,14 +71,34 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #36A66B;
+    background: #22c55e;
 }
 
+/* ÁREA DE CONTENIDO */
 .content-area {
     flex: 1;
+    min-width: 0;
     padding: 30px 35px;
+    background: #000000;
+    color: #ffffff;
 }
 
+/* PANTALLAS PÚBLICAS: LOGIN Y REGISTRO */
+.public-page {
+    min-height: 100vh;
+}
+
+    .public-page .main-content {
+        min-height: 100vh;
+    }
+
+    .public-page .content-area {
+        padding: 0;
+        min-height: 100vh;
+        background: #000000;
+    }
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .page {
         flex-direction: column;
@@ -76,6 +108,8 @@
         width: 100%;
         min-width: 100%;
         min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #262626;
     }
 
     .top-header {
@@ -84,5 +118,9 @@
 
     .content-area {
         padding: 20px;
+    }
+
+    .public-page .content-area {
+        padding: 0;
     }
 }
