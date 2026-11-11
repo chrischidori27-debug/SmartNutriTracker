@@ -1,17 +1,38 @@
-# 🐾 SmartNutriTracker
+#  SmartNutriTracker :3
 
 <div align="center">
 
-![un_socio_mas](https://i.scdn.co/image/ab67616d0000b27332fdd9cfd9c3b89028ff58e6?utm_source=chatgpt.com)
-**Una plataforma web para promover una alimentación más saludable mediante la gestión y el seguimiento nutricional.**
+<table>
+  <tr>
+    <td width="220" align="center" valign="middle">
+      <img src="https://i.scdn.co/image/ab67616d0000b27332fdd9cfd9c3b89028ff58e6" width="180" alt="Pibble, un socio más">
+    </td>
+    <td align="left" valign="middle">
+      <h1>SmartNutriTracker</h1>
+      <h3>Tu aliado en una alimentación más saludable</h3>
+      <p>Una plataforma web para la gestión y el seguimiento nutricional dentro del entorno educativo.</p>
+      <strong>Gestiona · Aprende · Cuida tu nutrición</strong>
+    </td>
+  </tr>
+</table>
 
-[![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
-[![Blazor](https://img.shields.io/badge/Blazor-Interactive_Server-512BD4?style=for-the-badge&logo=blazor&logoColor=white)](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
-[![C#](https://img.shields.io/badge/C%23-Language-239120?style=for-the-badge&logo=csharp&logoColor=white)](https://learn.microsoft.com/dotnet/csharp/)
-[![SQL Server](https://img.shields.io/badge/SQL_Server-Database-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/sql-server)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/chrischidori27-debug/SmartNutriTracker)
+<br>
 
-**Gestiona · Aprende · Cuida tu nutrición**
+<a href="https://dotnet.microsoft.com/">
+  <img src="https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white">
+</a>
+<a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor">
+  <img src="https://img.shields.io/badge/Blazor-Interactive_Server-7B2CBF?style=for-the-badge&logo=blazor&logoColor=white">
+</a>
+<a href="https://learn.microsoft.com/dotnet/csharp/">
+  <img src="https://img.shields.io/badge/C%23-Language-239120?style=for-the-badge&logo=csharp&logoColor=white">
+</a>
+<a href="https://www.microsoft.com/sql-server">
+  <img src="https://img.shields.io/badge/SQL_Server-Database-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white">
+</a>
+<a href="https://github.com/chrischidori27-debug/SmartNutriTracker">
+  <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white">
+</a>
 
 </div>
 
@@ -37,14 +58,14 @@ El sistema está orientado a la comunidad educativa y contempla diferentes perfi
 
 | Funcionalidad | Descripción |
 |---|---|
-| 👤 Registro de usuarios | Permite registrar nuevos usuarios. |
-| 🔐 Gestión de contraseñas | Almacenamiento mediante contraseñas protegidas con hash. |
-| 🛡️ Roles de usuario | Diferenciación de perfiles y responsabilidades. |
-| 🥗 Gestión de alimentos | Módulo previsto para administrar alimentos e información nutricional. |
-| 📅 Menús diarios | Módulo previsto para organizar menús nutricionales. |
-| 📋 Auditoría | Base de datos preparada para registrar eventos del sistema. |
+| Registro de usuarios | Permite registrar nuevos usuarios. |
+| Gestión de contraseñas | Almacenamiento de contraseñas protegidas mediante hash. |
+| Roles de usuario | Diferenciación de perfiles y responsabilidades. |
+| Gestión de alimentos | Módulo destinado a administrar alimentos e información nutricional. |
+| Menús diarios | Módulo destinado a organizar menús nutricionales. |
+| Auditoría | Base de datos preparada para almacenar registros de eventos. |
 
-> El proyecto se encuentra en desarrollo. Las funcionalidades descritas pueden encontrarse en diferentes etapas de implementación.
+> El proyecto se encuentra en desarrollo. Algunas funcionalidades están implementadas y otras forman parte de las siguientes etapas de construcción.
 
 ## 🧰 Tecnologías utilizadas
 
@@ -63,38 +84,36 @@ El sistema está orientado a la comunidad educativa y contempla diferentes perfi
 
 El proyecto utiliza **SQL Server LocalDB** como motor de base de datos.
 
-Nombre de la base de datos:
+**Nombre de la base de datos:** `SmartNutriTracker`
 
-`SmartNutriTracker`
-
-Principales tablas:
+### Principales tablas
 
 | Tabla | Descripción |
 |---|---|
 | Roles | Almacena los roles disponibles. |
 | Usuarios | Contiene la información de los usuarios. |
-| Alimentos | Almacena los alimentos y sus datos nutricionales. |
+| Alimentos | Almacena alimentos y sus datos nutricionales. |
 | MenusDiarios | Registra los menús diarios. |
 | MenuAlimentos | Relaciona los alimentos con los menús. |
 | LogsAuditoria | Almacena registros de auditoría. |
 
 ### Roles del sistema
 
-- **Administrador:** control general del sistema.
-- **Docente:** seguimiento de estudiantes.
-- **Estudiante:** consulta y registro de información.
-- **Nutricionista:** gestión nutricional y alimentos.
+| Rol | Responsabilidad |
+|---|---|
+| Administrador | Control general del sistema. |
+| Docente | Seguimiento de estudiantes. |
+| Estudiante | Consulta y registro de información. |
+| Nutricionista | Gestión nutricional y alimentos. |
 
 ## 🚀 Instalación y ejecución
 
 ### Requisitos previos
 
-Antes de ejecutar el proyecto, asegúrate de contar con:
-
 - Visual Studio 2022 o una versión compatible.
 - SDK de .NET 10.
 - SQL Server LocalDB.
-- SQL Server Management Studio (opcional, para administrar la base de datos).
+- SQL Server Management Studio (opcional).
 - Git.
 
 ### 1. Clonar el repositorio
@@ -122,8 +141,6 @@ Abre `appsettings.json` y verifica que la cadena de conexión corresponda a tu i
 Asegúrate de que la base de datos y sus tablas estén creadas antes de ejecutar la aplicación.
 
 ### 4. Restaurar dependencias
-
-Desde la terminal del proyecto ejecuta:
 
 ```bash
 dotnet restore
@@ -173,9 +190,6 @@ SmartNutriTracker/
 │   ├── app.css
 │   └── favicon.png
 │
-├── assets/
-│   └── pibble-banner.png
-│
 ├── appsettings.json
 ├── Program.cs
 └── SmartNutriTracker.csproj
@@ -183,7 +197,7 @@ SmartNutriTracker/
 
 ## 🔐 Seguridad
 
-SmartNutriTracker contempla medidas básicas de protección de información:
+SmartNutriTracker contempla medidas de protección de información:
 
 - Contraseñas almacenadas mediante hash.
 - Validación de datos durante el registro.
@@ -191,38 +205,25 @@ SmartNutriTracker contempla medidas básicas de protección de información:
 - Validación de los roles permitidos en el registro público.
 - Separación de responsabilidades mediante servicios y modelos.
 
-## 🐶 Nuestra mascota: Pibble
-
-¡Hola! Soy **Pibble**, la mascota oficial de SmartNutriTracker.
-
-Mi misión es recordarte que una alimentación saludable también puede ser sencilla, organizada y divertida.
-
-**Eat Smart. Live Better.**
-
 ## 👥 Equipo de desarrollo
 
 Proyecto académico desarrollado como parte de la asignatura de **Programación Web III**.
 
-- **Institución:** Universidad del Valle (UNIVALLE).
-- **Proyecto:** SmartNutriTracker.
-- **Repositorio:** [GitHub - SmartNutriTracker](https://github.com/chrischidori27-debug/SmartNutriTracker).
+| Información | Detalle |
+|---|---|
+| Institución | Universidad del Valle (UNIVALLE) |
+| Proyecto | SmartNutriTracker |
+| Asignatura | Programación Web III |
+| Repositorio | [GitHub - SmartNutriTracker](https://github.com/chrischidori27-debug/SmartNutriTracker) |
 
 ## 📌 Estado del proyecto
 
-**Versión:** 1.0
-
-**Estado:** En desarrollo.
-
----
-
 <div align="center">
 
-### 💚 SmartNutriTracker
+<img src="https://img.shields.io/badge/Version-1.0-22C55E?style=for-the-badge">
+<img src="https://img.shields.io/badge/Estado-En%20desarrollo-2563EB?style=for-the-badge">
 
-**Pequeños hábitos, grandes cambios.**
+<br><br>
 
-Hecho con dedicación por el equipo de desarrollo.
-
-🐾 Pibble te acompaña en el camino.
 
 </div>
