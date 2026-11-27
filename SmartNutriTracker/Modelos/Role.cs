@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace SmartNutriTracker.Modelos;
 
-[Index("Nombre", Name = "UQ__Roles__75E3EFCF162D5CA5", IsUnique = true)]
+[Index("Nombre", Name = "uq_roles_nombre", IsUnique = true)]
 public partial class Role
 {
     [Key]
     public int Id { get; set; }
 
+    [Required]
     [StringLength(50)]
     public string Nombre { get; set; } = null!;
 

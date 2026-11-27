@@ -361,3 +361,23 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# =====================================================
+# SmartNutriTracker - Archivos sensibles y locales
+# =====================================================
+
+# Configuración local con contraseñas
+appsettings.Development.json
+appsettings.*.local.json
+**/appsettings.Development.json
+
+# User Secrets de .NET
+secrets.json
+
+# Archivos de entorno
+.env
+.env.*
+!.env.example
+
+# Logs y temporales locales
+*.log
+logs/

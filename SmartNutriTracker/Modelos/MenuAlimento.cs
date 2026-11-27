@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace SmartNutriTracker.Modelos;
 
-[Index("MenuId", "AlimentoId", Name = "UQ_MenuAlimentos", IsUnique = true)]
+[Index("MenuId", "AlimentoId", Name = "uq_menualim", IsUnique = true)]
 public partial class MenuAlimento
 {
     [Key]
@@ -16,7 +14,7 @@ public partial class MenuAlimento
 
     public int AlimentoId { get; set; }
 
-    [Column(TypeName = "decimal(10, 2)")]
+    [Column(TypeName = "numeric(10,2)")]
     public decimal Cantidad { get; set; }
 
     [ForeignKey("AlimentoId")]

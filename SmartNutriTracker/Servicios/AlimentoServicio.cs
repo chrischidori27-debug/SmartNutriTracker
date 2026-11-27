@@ -43,7 +43,7 @@ namespace SmartNutriTracker.Servicios
                 return (false, "Ya existe un alimento con ese nombre.");
             }
 
-            alimento.FechaRegistro = DateTime.Now;
+            alimento.FechaRegistro = DateTime.UtcNow;
             alimento.Estado = true;
 
             context.Alimentos.Add(alimento);
