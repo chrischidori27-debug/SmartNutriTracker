@@ -10,17 +10,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Conexion con SQL Server
+// Conexión con PostgreSQL (Supabase)
 builder.Services.AddDbContextFactory<SmartNutriTrackerContext>(options =>
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString("ConexionSQL")
     )
+    .UseSnakeCaseNamingConvention()   // mapea PascalCase → snake_case
 );
 
-// Servicio para proteger y verificar contrasenas
+// Servicio para proteger y verificar contraseñas
 builder.Services.AddScoped<IPasswordHasher<Usuario>, PasswordHasher<Usuario>>();
 
-// Servicio de usuarios
+// Servicios de la aplicación
 builder.Services.AddScoped<UsuarioServicio>();
 builder.Services.AddScoped<UsuarioSesion>();
 builder.Services.AddScoped<AlimentoServicio>();

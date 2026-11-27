@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace SmartNutriTracker.Modelos;
 
@@ -12,75 +10,76 @@ public partial class SmartNutriTrackerContext : DbContext
     }
 
     public virtual DbSet<Alimento> Alimentos { get; set; }
-
     public virtual DbSet<LogsAuditorium> LogsAuditoria { get; set; }
-
     public virtual DbSet<MenuAlimento> MenuAlimentos { get; set; }
-
     public virtual DbSet<MenusDiario> MenusDiarios { get; set; }
-
     public virtual DbSet<Role> Roles { get; set; }
-
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Nombres de tablas explícitos (por si el naming convention no alcanza)
+        modelBuilder.Entity<Role>().ToTable("roles");
+        modelBuilder.Entity<Usuario>().ToTable("usuarios");
+        modelBuilder.Entity<Alimento>().ToTable("alimentos");
+        modelBuilder.Entity<MenusDiario>().ToTable("menus_diarios");
+        modelBuilder.Entity<MenuAlimento>().ToTable("menu_alimentos");
+        modelBuilder.Entity<LogsAuditorium>().ToTable("logs_auditoria");
+
         modelBuilder.Entity<Alimento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Alimento__3214EC072A167132");
-
             entity.Property(e => e.Estado).HasDefaultValue(true);
-            entity.Property(e => e.FechaRegistro).HasDefaultValueSql("(sysdatetime())");
+            entity.Property(e => e.FechaRegistro).HasDefaultValueSql("now()");
+            entity.Property(e => e.Fibra).HasDefaultValue(0m);
         });
 
         modelBuilder.Entity<LogsAuditorium>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__LogsAudi__3214EC075EE6C29A");
+            entity.Property(e => e.Fecha).HasDefaultValueSql("now()");
 
-            entity.Property(e => e.Fecha).HasDefaultValueSql("(sysdatetime())");
-
-            entity.HasOne(d => d.Usuario).WithMany(p => p.LogsAuditoria).HasConstraintName("FK_LogsAuditoria_Usuarios");
+            entity.HasOne(d => d.Usuario)
+                  .WithMany(p => p.LogsAuditoria)
+                  .HasForeignKey(d => d.UsuarioId)
+                  .OnDelete(DeleteBehavior.SetNull)
+                  .HasConstraintName("fk_logs_usuarios");
         });
 
         modelBuilder.Entity<MenuAlimento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__MenuAlim__3214EC07BA8D8E2E");
+            entity.HasOne(d => d.Alimento)
+                  .WithMany(p => p.MenuAlimentos)
+                  .HasForeignKey(d => d.AlimentoId)
+                  .OnDelete(DeleteBehavior.Restrict)
+                  .HasConstraintName("fk_menualim_alimento");
 
-            entity.HasOne(d => d.Alimento).WithMany(p => p.MenuAlimentos)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_MenuAlimentos_Alimentos");
-
-            entity.HasOne(d => d.Menu).WithMany(p => p.MenuAlimentos)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_MenuAlimentos_Menus");
+            entity.HasOne(d => d.Menu)
+                  .WithMany(p => p.MenuAlimentos)
+                  .HasForeignKey(d => d.MenuId)
+                  .OnDelete(DeleteBehavior.Cascade)
+                  .HasConstraintName("fk_menualim_menu");
         });
 
         modelBuilder.Entity<MenusDiario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__MenusDia__3214EC07F12BAD70");
+            entity.Property(e => e.FechaRegistro).HasDefaultValueSql("now()");
 
-            entity.Property(e => e.FechaRegistro).HasDefaultValueSql("(sysdatetime())");
-
-            entity.HasOne(d => d.Usuario).WithMany(p => p.MenusDiarios)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_MenusDiarios_Usuarios");
-        });
-
-        modelBuilder.Entity<Role>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC07111462A6");
+            entity.HasOne(d => d.Usuario)
+                  .WithMany(p => p.MenusDiarios)
+                  .HasForeignKey(d => d.UsuarioId)
+                  .OnDelete(DeleteBehavior.Restrict)
+                  .HasConstraintName("fk_menus_usuarios");
         });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07EAD751B1");
-
             entity.Property(e => e.Estado).HasDefaultValue(true);
-            entity.Property(e => e.FechaRegistro).HasDefaultValueSql("(sysdatetime())");
+            entity.Property(e => e.FechaRegistro).HasDefaultValueSql("now()");
 
-            entity.HasOne(d => d.Rol).WithMany(p => p.Usuarios)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Usuarios_Roles");
+            entity.HasOne(d => d.Rol)
+                  .WithMany(p => p.Usuarios)
+                  .HasForeignKey(d => d.RolId)
+                  .OnDelete(DeleteBehavior.Restrict)
+                  .HasConstraintName("fk_usuarios_roles");
         });
 
         OnModelCreatingPartial(modelBuilder);

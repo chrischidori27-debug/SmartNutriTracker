@@ -57,18 +57,17 @@ namespace SmartNutriTracker.Servicios
 
             string[] rolesPermitidos =
             {
-                "Estudiante",
-                "Docente",
-                "Nutricionista"
-            };
+        "Estudiante",
+        "Docente",
+        "Nutricionista"
+    };
 
             if (!rolesPermitidos.Contains(rolNombre))
             {
                 return (false, "No puedes registrarte con ese rol.");
             }
 
-            await using var context =
-                await _contextFactory.CreateDbContextAsync();
+            await using var context = await _contextFactory.CreateDbContextAsync();
 
             bool correoExiste = await context.Usuarios
                 .AnyAsync(u => u.Correo == correo);
@@ -86,22 +85,29 @@ namespace SmartNutriTracker.Servicios
                 return (false, "El rol seleccionado no existe.");
             }
 
+            // Separar nombre completo en Nombres y Apellidos
+            var partes = nombre.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string nombres = partes.Length > 0 ? partes[0] : nombre;
+            string apellidos = partes.Length > 1
+                ? string.Join(" ", partes.Skip(1))
+                : "SinApellido";   // mínimo 2 caracteres para cumplir el CHECK
+
+            if (nombres.Length < 2) nombres = nombre.Length >= 2 ? nombre : "Usuario";
+            if (apellidos.Length < 2) apellidos = "SinApellido";
+
             var usuario = new Usuario
             {
-                Nombre = nombre,
+                Nombres = nombres,
+                Apellidos = apellidos,
                 Correo = correo,
                 RolId = rol.Id,
                 Estado = true,
-                FechaRegistro = DateTime.Now
+                FechaRegistro = DateTime.UtcNow
             };
 
-            usuario.PasswordHash = _passwordHasher.HashPassword(
-                usuario,
-                contrasena
-            );
+            usuario.PasswordHash = _passwordHasher.HashPassword(usuario, contrasena);
 
             context.Usuarios.Add(usuario);
-
             await context.SaveChangesAsync();
 
             return (true, "Usuario registrado correctamente.");

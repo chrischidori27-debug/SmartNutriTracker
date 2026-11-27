@@ -69,7 +69,7 @@ namespace SmartNutriTracker.Servicios
                 Descripcion = descripcion,
                 Fecha = fecha,
                 UsuarioId = usuarioId,
-                FechaRegistro = DateTime.Now
+                FechaRegistro = DateTime.UtcNow
             };
 
             context.MenusDiarios.Add(menu);

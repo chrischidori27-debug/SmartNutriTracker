@@ -13,14 +13,13 @@ namespace SmartNutriTracker.Servicios
         public bool EstaAutenticado { get; private set; }
 
         public void IniciarSesion(Usuario usuario)
-        {
-            UsuarioId = usuario.Id;
-            Nombre = usuario.Nombre;
-            Correo = usuario.Correo;
-            Rol = usuario.Rol.Nombre;
-
-            EstaAutenticado = true;
-        }
+{
+    UsuarioId = usuario.Id;
+    Nombre = usuario.NombreCompleto;   // usa la propiedad NotMapped
+    Correo = usuario.Correo;
+    Rol = usuario.Rol.Nombre;
+    EstaAutenticado = true;
+}
 
         public void CerrarSesion()
         {

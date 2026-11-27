@@ -95,25 +95,15 @@
                     <div class="campo">
                         <label for="nombre">Nombre completo</label>
 
-                        <input id="nombre"
-                               type="text"
-                               @bind="Nombre"
-                               placeholder="Ingresa tu nombre completo"
-                               maxlength="100"
-                               autocomplete="name"
-                               required />
+                        <input id="nombre" type="text" @bind="Nombre" placeholder="Ingresa tu nombre completo"
+                               maxlength="100" autocomplete="name" required />
                     </div>
 
                     <div class="campo">
                         <label for="correo">Correo electrónico</label>
 
-                        <input id="correo"
-                               type="email"
-                               @bind="Correo"
-                               placeholder="ejemplo@innovare.edu"
-                               maxlength="150"
-                               autocomplete="email"
-                               required />
+                        <input id="correo" type="email" @bind="Correo" placeholder="ejemplo@innovare.edu"
+                               maxlength="150" autocomplete="email" required />
                     </div>
 
                     <div class="campo">
@@ -134,29 +124,18 @@
                     <div class="campo">
                         <label for="contrasena">Contraseña</label>
 
-                        <input id="contrasena"
-                               type="password"
-                               @bind="Contrasena"
-                               placeholder="Mínimo 8 caracteres"
-                               minlength="8"
-                               autocomplete="new-password"
-                               required />
+                        <input id="contrasena" type="password" @bind="Contrasena" placeholder="Mínimo 8 caracteres"
+                               minlength="8" autocomplete="new-password" required />
                     </div>
 
                     <div class="campo">
                         <label for="confirmar">Confirmar contraseña</label>
 
-                        <input id="confirmar"
-                               type="password"
-                               @bind="ConfirmarContrasena"
-                               placeholder="Repite tu contraseña"
-                               autocomplete="new-password"
-                               required />
+                        <input id="confirmar" type="password" @bind="ConfirmarContrasena"
+                               placeholder="Repite tu contraseña" autocomplete="new-password" required />
                     </div>
 
-                    <button type="submit"
-                            class="registro-button"
-                            disabled="@Procesando">
+                    <button type="submit" class="registro-button" disabled="@Procesando">
 
                         @if (Procesando)
                         {
@@ -253,9 +232,10 @@
                 ConfirmarContrasena = "";
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            Mensaje = "No se pudo completar el registro. Intenta nuevamente.";
+            // Temporal: muestra el error real
+            Mensaje = $"Error: {ex.InnerException?.Message ?? ex.Message}";
             RegistroExitoso = false;
         }
         finally
