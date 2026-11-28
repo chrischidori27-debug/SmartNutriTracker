@@ -381,3 +381,5 @@ secrets.json
 # Logs y temporales locales
 *.log
 logs/
+# Configuracion local y secretos
+SmartNutriTracker/appsettings.Development.json
